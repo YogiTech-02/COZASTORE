@@ -1,0 +1,174 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>Checkout</title>
+{% endblock %}
+{% block body%}
+<!-- ##### Breadcumb Area Start ##### -->
+<!-- <div class="breadcumb_area bg-img" style="background-image: url(/static/img/bg-img/breadcumb.jpg);"> -->
+<div class="container h-25">
+    <div class="row h-100 align-items-center">
+        <div class="col-12">
+            <div class="page-title text-center">
+                <h2>Checkout</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div> -->
+<!-- ##### Breadcumb Area End ##### -->
+
+<!-- ##### Checkout Area Start ##### -->
+<div class="checkout_area section-padding-70">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6">
+                <div class="checkout_details_area mt-10 clearfix">
+
+                    <div class="cart-page-heading mb-3">
+                        <h5 class="text-center">Billing Details</h5>
+                    </div>
+
+                    <div class="col-lg-20">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Username</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.username}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Email</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.email}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Phone</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.phone}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Address1</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.addressline1}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Address2</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.addressline2}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Address3</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.addressline3}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Pin</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.pin}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">City</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.city}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">State</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{buyer.state}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mb-2">
+                    <a href="/update-profile/"><button type="button" class="btn btn-primary"
+                            style="width: 100%;">Update</button></a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="checkout_details_area mt-10 clearfix">
+
+                    <div class="mb-3 text-center">
+                        <h5 class=>Your Order</h5>
+                    </div>
+
+                    <div class="col-lg-10">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="order-details-confirmation">
+                                    <div class="cart-page-heading">
+                                        <p class="text-center">The Details</p>
+                                    </div>
+                                    <hr>
+                                    <ul class="order-details-form mb-4">
+                                        <li><span>Product</span> <span style="padding-left: 300px;">Price</span></li>
+                                        <hr>
+                                        {% for value in request.session.cart.values %}
+                                        <li><span>{{value.name}}</span> <span style="padding-left: 275px;">&#8377; {{value.price}}</span></li>
+                                        <hr>
+                                        {% endfor %}
+                                        <li><span>Total</span> <span style="padding-left: 320px;">&#8377; {{request.session.total}}</span></li>
+                                        <hr>
+                                        <li><span>Shipping</span> <span style="padding-left: 300px;">&#8377; {{request.session.shipping}}</span></li>
+                                        <hr>
+                                        <li><span>Final Price</span> <span style="padding-left: 280px;">&#8377; {{request.session.final}}</span></li>
+                                    </ul>
+                                    <form action="/place-order/" method="post">
+                                        {% csrf_token %}
+                                        <select name="mode" class="form-control">
+                                            <option value="newest">COD</option>
+                                            <option value="LtoH">NetBanking/UPI</option>
+                                            <option value="HtoL">CARD</option>
+                                        </select>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-2">
+                <a href="/place_order/"><button type="button" class="btn btn-primary"
+                        style="width: 100%;">Place Order</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- ##### Checkout Area End ##### -->
+{% endblock %}

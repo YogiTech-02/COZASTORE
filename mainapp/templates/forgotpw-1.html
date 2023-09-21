@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>Forogot_Password</title>
+{% endblock %}
+{% block body %}
+
+<form action="/forgotpw-1/" method="post" class="vh-100">
+    {% csrf_token %}
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100" style="padding-top: 50px;">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        {% if messages %}
+                        {% for m in messages %}
+                        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">{{m}}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+
+                        <h3 class="mb-5">Forgot Password</h3>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="typeEmailX-2">username</label>
+                            <input type="text" name="username" id="typeEmailX-2" required
+                                class="form-control form-control-lg" placeholder="Enter Your Username" />
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">send OTP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'index.html '%}
+{% block title %}
+<title>Profile</title>
+{% endblock %}
+{% block body %}
+<section style="background-color: #eee;">
+    <div class="container py-5 pb-4">
+
+
+        <div class="row pt-5">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center pt-5 mt-5" style="height: 445px;">
+                        {% if buyer.pic %}
+                        <img src="{{buyer.pic.url}}" class="h-50 rounded-circle"  >
+                        {% else %}
+                        <img src="/static/images/pro.png" class="h-50 rounded-circle">
+                        {% endif %}
+                        <h5 class="my-3">{{buyer.name}}</h5>
+                        <a href="/update-profile/"><button type="button"
+                                class="btn btn-outline-primary ms-1">Update</button></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Username</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.username}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.email}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Phone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.phone}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Address1</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.addressline1}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Address2</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.addressline2}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Address3</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.addressline3}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Pin</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.pin}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">City</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.city}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">State</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{buyer.state}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
